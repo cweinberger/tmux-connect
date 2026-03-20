@@ -73,13 +73,15 @@ alias tc-server="tmux-connect user@my-server"
 
 ## Terminal Support
 
-| Terminal | Tab opening | Tab closing |
-|----------|------------|-------------|
-| iTerm2 | Full support | Full support |
-| Terminal.app | Full support | Limited |
-| Other | Foreground attach | N/A |
+> **Note:** tmux-connect is currently only tested and fully supported on **iTerm2** (macOS). Other terminals may work with limited functionality but are untested.
 
-When opening tabs, tmux-connect stays on the current tab -- new sessions open in the background.
+| Terminal | Tab opening | Tab closing | Status |
+|----------|------------|-------------|--------|
+| iTerm2 | Full support | Full support | **Tested** |
+| Terminal.app | Basic support | Limited | Untested |
+| Other | Foreground attach | N/A | Untested |
+
+When opening tabs in iTerm2, tmux-connect stays on the current tab -- new sessions open in the background.
 
 ## How it works
 
