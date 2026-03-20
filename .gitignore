@@ -1,0 +1,6 @@
+# Binary
+tmux-connect
+*.exe
+
+# OS
+.DS_Store
