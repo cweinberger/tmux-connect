@@ -517,13 +517,11 @@ func openSessionTab(remote, sessionName, terminal string, useSSH bool) tea.Cmd {
 		case "iterm2":
 			script = fmt.Sprintf(`tell application "iTerm2"
 	tell current window
-		set originalTab to current tab
 		set newTab to (create tab with default profile)
 		tell current session of newTab
 			set name to "%s"
 			write text "%s"
 		end tell
-		select originalTab
 	end tell
 end tell`, sessionName, connectCmd)
 		case "terminal":
@@ -562,13 +560,11 @@ func openSessionWindowTab(remote, sessionName string, windowIndex int, terminal 
 			tabName := fmt.Sprintf("%s:%d", sessionName, windowIndex)
 			script = fmt.Sprintf(`tell application "iTerm2"
 	tell current window
-		set originalTab to current tab
 		set newTab to (create tab with default profile)
 		tell current session of newTab
 			set name to "%s"
 			write text "%s"
 		end tell
-		select originalTab
 	end tell
 end tell`, tabName, connectCmd)
 		case "terminal":
