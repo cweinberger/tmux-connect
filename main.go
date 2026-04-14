@@ -519,11 +519,12 @@ func openSessionTab(remote, sessionName, terminal string, useSSH bool) tea.Cmd {
 	tell current window
 		set newTab to (create tab with default profile)
 		tell current session of newTab
-			set name to "%s"
 			write text "%s"
+			delay 1
+			set name to "%s"
 		end tell
 	end tell
-end tell`, sessionName, connectCmd)
+end tell`, connectCmd, sessionName)
 		case "terminal":
 			script = fmt.Sprintf(`tell application "Terminal"
 	activate
@@ -562,11 +563,12 @@ func openSessionWindowTab(remote, sessionName string, windowIndex int, terminal 
 	tell current window
 		set newTab to (create tab with default profile)
 		tell current session of newTab
-			set name to "%s"
 			write text "%s"
+			delay 1
+			set name to "%s"
 		end tell
 	end tell
-end tell`, tabName, connectCmd)
+end tell`, connectCmd, tabName)
 		case "terminal":
 			tabName := fmt.Sprintf("%s:%d", sessionName, windowIndex)
 			script = fmt.Sprintf(`tell application "Terminal"
@@ -605,11 +607,12 @@ func openAllSessionTabs(remote string, sessions []tmuxSession, terminal string, 
 	tell current window
 		set newTab to (create tab with default profile)
 		tell current session of newTab
-			set name to "%s"
 			write text "%s"
+			delay 1
+			set name to "%s"
 		end tell
 	end tell
-end tell`, s.Name, connectCmd)
+end tell`, connectCmd, s.Name)
 			case "terminal":
 				script = fmt.Sprintf(`tell application "Terminal"
 	activate
