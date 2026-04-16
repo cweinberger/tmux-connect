@@ -1,4 +1,4 @@
-module github.com/cweinberger/tmux-connect
+module github.com/cweinberger/tmc
 
 go 1.25.6
 

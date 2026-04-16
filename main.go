@@ -1448,8 +1448,13 @@ func main() {
 	}
 
 	if remote == "" {
-		fmt.Fprintln(os.Stderr, "Usage: tmux-connect [--ssh] <remote>")
+		remote = os.Getenv("TMC_DEFAULT_HOST")
+	}
+
+	if remote == "" {
+		fmt.Fprintln(os.Stderr, "Usage: tmc [--ssh] <remote>")
 		fmt.Fprintln(os.Stderr, "")
+		fmt.Fprintln(os.Stderr, "Set TMC_DEFAULT_HOST or pass a remote host.")
 		fmt.Fprintln(os.Stderr, "Run with --help for more information.")
 		os.Exit(1)
 	}
@@ -1468,14 +1473,17 @@ func main() {
 }
 
 func helpText() string {
-	return `tmux-connect - tmux session manager for remote servers
+	return `tmc - tmux session manager for remote servers
 
 Usage:
-  tmux-connect [--ssh] <remote>
+  tmc [--ssh] <remote>
 
 Options:
   --ssh    Use ssh instead of mosh (default: mosh)
   -h       Show this help
+
+Environment:
+  TMC_DEFAULT_HOST   Default remote host (used when no <remote> arg given)
 
 Controls:
   Up/Down    Navigate sessions and windows
